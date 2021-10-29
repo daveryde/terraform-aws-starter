@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    aws = "~> 3.63.0"
+  }
+
+  required_version = ">= 1.0.9"
+}
+
 provider "aws" {
   region     = "us-east-2"
   access_key = ""
@@ -10,7 +18,7 @@ resource "aws_vpc" "prod-vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "prod"
+    Name = var.vpc_name
   }
 }
 
@@ -31,7 +39,7 @@ resource "aws_route_table" "prod-route-table" {
   }
 
   tags = {
-    Name = "prod"
+    Name = var.rt_name
   }
 }
 
@@ -43,7 +51,7 @@ resource "aws_subnet" "subnet-1" {
   availability_zone = "us-east-2a"
 
   tags = {
-    Name = "prod-subnet"
+    Name = var.subnet_name
   }
 }
 
@@ -106,7 +114,7 @@ resource "aws_security_group" "allow_web" {
   }
 
   tags = {
-    Name = "allow_web"
+    Name = var.web_sg_name
   }
 }
 
@@ -148,7 +156,8 @@ resource "aws_instance" "web-server-instance" {
                 sudo service httpd start
                 echo "<h1>Deployed via Terraform wih ELB</h1>" | sudo tee /var/www/html/index.html
                 EOF
+
   tags = {
-    Name = "web-server"
+    Name = var.instance_name
   }
 }
