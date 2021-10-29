@@ -20,7 +20,9 @@
 
   <p>Additional ideas to implement include:</p>
 
-  - [ ] Terraform variables
+  - [x] Terraform variables
+  - [x] Terraform outputs
+  - [x] Terraform and provider versioning (best practices)
   - [ ] Elastic Load Balancer
   - [ ] Elastic Container Services
   - [ ] Fargate Instances
