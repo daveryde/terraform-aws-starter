@@ -56,7 +56,15 @@ provider "aws" {
 ```sh
 terraform apply
 ```
-4. Copy and paste your assigned elastic IP into a browser to view the html page generated once all cloud resources have been created to support this server instance.
+4. Copy and paste your assigned elastic IP output from the terminal into a browser to view the html page generated once all cloud resources have been created to support this server instance.
+```sh
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+instance_id = "i-026fe87e3a9c7306c"
+instance_public_ip = "18.116.190.239"   <-- example public IP output
+```
 
 ## Terraform Resources
 
